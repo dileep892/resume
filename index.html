@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dileep Velma — Network Architect | Hybrid Cloud, Data Center & Network Security</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --panel:#FAFBFE;
+    --card:#FFFFFF;
+    --line:#EEF1F6;
+    --heading:#333A47;
+    --ink:#4E5566;
+    --muted:#98A1B0;
+    --sky:#6DA8FF;
+    --mint:#5AD1BC;
+    --peach:#FF9F80;
+    --lav:#A98CF0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation:none !important; transition:none !important;} }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-weight:400;
+    font-size:15.5px;
+    line-height:1.75;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding-left:28px; padding-right:28px;}
+  h1,h2,h3{ color:var(--heading); font-weight:600; }
+
+  /* NAV — floating pill */
+  header.nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .nav-pill{ max-width:1040px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:16px 28px; }
+  .nav-logo{ font-weight:700; font-size:15px; color:var(--heading); }
+  .nav-logo span{ color:var(--sky); }
+  .nav-links{ display:flex; gap:24px; font-size:13.5px; font-weight:500; color:var(--muted); }
+  .nav-links a{ text-decoration:none; }
+  .nav-links a:hover{ color:var(--heading); }
+  @media (max-width:760px){ .nav-links{display:none;} }
+  .nav-cta{ font-size:13px; font-weight:600; background:var(--heading); color:#fff; padding:10px 18px; border-radius:999px; text-decoration:none; white-space:nowrap; }
+  .nav-cta:hover{ background:#1E232D; }
+
+  /* HERO */
+  .hero{ padding:70px 0 40px 0; }
+  .hero-inner{ text-align:center; max-width:700px; margin:0 auto; }
+  .badge{ display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600; color:var(--sky); background:#EEF5FF; padding:8px 16px; border-radius:999px; margin-bottom:26px; }
+  .badge .dot{ width:6px; height:6px; border-radius:50%; background:var(--mint); }
+  .hero h1{ font-size:42px; font-weight:700; letter-spacing:-0.5px; line-height:1.15; margin-bottom:14px; color:var(--heading); }
+  .hero-role{ font-size:16px; color:var(--muted); font-weight:500; margin-bottom:22px; }
+  .hero-body{ font-size:15.5px; color:var(--ink); margin-bottom:30px; font-weight:400; }
+  .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:30px; }
+  .btn{ font-size:13.5px; font-weight:600; text-decoration:none; padding:13px 22px; border-radius:999px; display:inline-flex; align-items:center; gap:8px; }
+  .btn-primary{ background:var(--heading); color:#fff; }
+  .btn-primary:hover{ background:#1E232D; }
+  .btn-ghost{ border:1.5px solid var(--line); color:var(--heading); background:#fff; }
+  .btn-ghost:hover{ border-color:var(--sky); color:var(--sky); }
+  .hero-chip-row{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .hchip{ font-size:11.5px; font-weight:500; color:var(--muted); background:var(--panel); border:1px solid var(--line); padding:6px 12px; border-radius:999px; }
+
+  /* soft glow backdrop behind hero */
+  .glow-wrap{ position:relative; }
+  .glow{ position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:640px; height:340px; background:radial-gradient(circle, rgba(109,168,255,0.13), transparent 65%); z-index:-1; pointer-events:none; }
+
+  section{ padding:54px 0; }
+  .sec-head{ text-align:center; max-width:600px; margin:0 auto 40px auto; }
+  .sec-eyebrow{ font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--mint); margin-bottom:10px; }
+  .sec-title{ font-size:26px; font-weight:700; margin-bottom:10px; color:var(--heading); }
+  .sec-intro{ color:var(--muted); font-size:14.5px; }
+
+  .alt-bg{ background:var(--panel); border-radius:32px; }
+
+  /* SERVICES */
+  .services-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  @media (max-width:860px){ .services-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .services-grid{ grid-template-columns:1fr; } }
+  .service-card{ background:var(--card); border:1px solid var(--line); border-radius:20px; padding:26px 22px; transition:box-shadow .2s, transform .15s; }
+  .service-card:hover{ box-shadow:0 14px 30px rgba(60,70,100,0.09); transform:translateY(-3px); }
+  .service-icon{ width:40px; height:40px; border-radius:12px; margin-bottom:16px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:14px; }
+  .service-title{ font-size:15px; font-weight:600; margin-bottom:8px; color:var(--heading); }
+  .service-desc{ font-size:13.4px; color:var(--muted); line-height:1.65; font-weight:400; }
+
+  /* APPROACH */
+  .approach-row{ display:flex; gap:16px; overflow-x:auto; padding-bottom:6px; }
+  .approach-step{ flex:1; min-width:200px; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:24px 22px; }
+  .approach-step-num{ width:34px; height:34px; border-radius:50%; background:var(--panel); color:var(--heading); font-weight:700; font-size:13px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
+  .approach-step-title{ font-size:14.5px; font-weight:600; margin-bottom:8px; color:var(--heading); }
+  .approach-step-desc{ font-size:12.8px; color:var(--muted); line-height:1.6; }
+
+  /* EXPERIENCE */
+  .exp-item{ background:var(--card); border:1px solid var(--line); border-radius:22px; padding:28px 30px; margin-bottom:16px; }
+  .exp-item:last-child{ margin-bottom:0; }
+  .exp-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+  .exp-title{ font-size:18px; font-weight:700; color:var(--heading); }
+  .exp-org{ font-size:13.5px; color:var(--sky); font-weight:600; margin-top:4px; }
+  .exp-dates{ font-size:12px; font-weight:600; color:var(--muted); background:var(--panel); padding:6px 12px; border-radius:999px; white-space:nowrap; }
+  .exp-item ul{ list-style:none; }
+  .exp-item ul li{ position:relative; padding-left:20px; margin-bottom:9px; font-size:14px; color:var(--ink); font-weight:400; }
+  .exp-item ul li::before{ content:""; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--mint); }
+
+  /* CREDENTIALS */
+  .cred-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:760px){ .cred-grid{ grid-template-columns:1fr; } }
+  .cred-card{ background:var(--card); border:1px solid var(--line); border-radius:20px; padding:26px 26px; }
+  .cred-card h3{ font-size:13px; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+  .cert-row{ display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--panel); font-size:13.8px; color:var(--heading); font-weight:500; }
+  .cert-row:last-child{ border-bottom:none; }
+  .cert-check{ width:20px; height:20px; border-radius:50%; background:#E9FBF6; color:var(--mint); display:flex; align-items:center; justify-content:center; font-size:11px; flex-shrink:0; font-weight:700; }
+  .tool-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tool-pill{ font-size:12px; font-weight:500; color:var(--heading); background:var(--panel); border:1px solid var(--line); padding:7px 13px; border-radius:999px; }
+  .edu-title{ font-weight:700; font-size:15px; color:var(--heading); }
+  .edu-sub{ color:var(--muted); font-size:13px; margin-top:6px; }
+  .edu-year{ color:var(--sky); font-weight:600; font-size:12.5px; margin-top:10px; }
+
+  /* CONTACT */
+  .contact-card{ background:linear-gradient(135deg, #F4F8FF, #F0FBF8); border:1px solid var(--line); border-radius:32px; padding:56px 40px; text-align:center; }
+  .contact-card h2{ font-size:28px; font-weight:700; margin-bottom:14px; color:var(--heading); }
+  .contact-card p{ color:var(--muted); max-width:480px; margin:0 auto 26px auto; font-size:14.5px; }
+  .contact-links{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+
+  footer{ padding:30px 0; color:var(--muted); font-size:12px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-pill">
+    <div class="nav-logo">Dileep <span>Velma</span></div>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#experience">Experience</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#" id="dl1" download="Dileep_Velma_Network.pdf">Download CV</a>
+  </div>
+</header>
+
+<div class="wrap glow-wrap">
+  <div class="glow"></div>
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="badge"><span class="dot"></span>Available for Global Engagements</div>
+      <h1>Dileep Velma</h1>
+      <div class="hero-role">Penetration Tester · Security Researcher · Consultant</div>
+      <p class="hero-body">
+        Security consultant with 3+ years advising banking and enterprise clients on Web, API, Mobile (Android), and Network security. I run full VAPT engagements end-to-end — scoping, testing, and reporting findings with remediation guidance to technical and executive stakeholders.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#" id="dl2" download="Dileep_Resume.pdf">↓ Download CV</a>
+        <a class="btn btn-ghost" href="mailto:dileepvelma@gmail.com">✉ dileepvelma@gmail.com</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/dileepreddyvelma/" target="_blank" rel="noopener">in LinkedIn</a>
+      </div>
+      <div class="hero-chip-row">
+        <span class="hchip">OWASP Top 10</span>
+        <span class="hchip">OWASP API Top 10</span>
+        <span class="hchip">VAPT</span>
+        <span class="hchip">Banking &amp; Enterprise</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">What I Advise On</div>
+      <div class="sec-title">Engagement Areas</div>
+      <p class="sec-intro">Consulting services grounded in hands-on testing experience for banking and enterprise clients.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon" style="background:var(--sky);">W</div>
+        <div class="service-title">Network Security</div>
+        <div class="service-desc">Comprehensive network assessments including firewall review, segmentation validation, and infrastructure hardening recommendations.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="background:var(--mint);">A</div>
+        <div class="service-title">API Security Reviews</div>
+        <div class="service-desc">Design and implementation reviews, authentication/authorization testing, and protection against OWASP API Top 10 risks.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="background:var(--peach);">M</div>
+        <div class="service-title">Mobile Application Security</div>
+        <div class="service-desc">Android application testing, reverse engineering, secure storage checks, and API integration security for mobile clients.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="background:var(--lav);">N</div>
+        <div class="service-title">Network &amp; Firewall Security</div>
+        <div class="service-desc">Firewall rule audits, policy optimization, and secure architecture guidance for hybrid cloud and data center networks.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="background:var(--sky);">V</div>
+        <div class="service-title">Vulnerability &amp; Remediation Management</div>
+        <div class="service-desc">End-to-end vulnerability lifecycle support: discovery, triage, prioritization, and verification of remediation.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" style="background:var(--mint);">R</div>
+        <div class="service-title">Security Reporting &amp; Advisory</div>
+        <div class="service-desc">Technical and executive reporting, advisory sessions, and tailored recommendations to improve security posture.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach" class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">How I Work</div>
+      <div class="sec-title">Engagement Approach</div>
+      <p class="sec-intro">A consistent methodology across every assessment, from initial scope to closed finding.</p>
+    </div>
+    <div class="approach-row">
+      <div class="approach-step">
+        <div class="approach-step-num">1</div>
+        <div class="approach-step-title">Scope &amp; Recon</div>
+        <div class="approach-step-desc">Define the engagement boundaries, map the attack surface, and gather reconnaissance using industry-standard tooling.</div>
+      </div>
+      <div class="approach-step">
+        <div class="approach-step-num">2</div>
+        <div class="approach-step-title">Test &amp; Validate</div>
+        <div class="approach-step-desc">Manual and automated testing to identify vulnerabilities, validate exploitability, and capture proof-of-concepts.</div>
+      </div>
+      <div class="approach-step">
+        <div class="approach-step-num">3</div>
+        <div class="approach-step-title">Report &amp; Prioritize</div>
+        <div class="approach-step-desc">Document findings with impact, risk rating, and prioritized remediation steps for technical and business audiences.</div>
+      </div>
+      <div class="approach-step">
+        <div class="approach-step-num">4</div>
+        <div class="approach-step-title">Support Remediation</div>
+        <div class="approach-step-desc">Work with engineering teams to verify fixes, retest, and close findings until the issues are resolved.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Track Record</div>
+      <div class="sec-title">Professional Experience</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-top">
+        <div>
+          <div class="exp-title">Cyber Security Analyst</div>
+          <div class="exp-org">Network Intelligence (NII)</div>
+        </div>
+        <span class="exp-dates">Oct 2024 – Present</span>
+      </div>
+      <ul>
+        <li>Conduct security assessments of web applications and APIs for private banking clients.</li>
+        <li>Identify, validate, and document vulnerabilities with detailed proof-of-concepts and remediation guidance.</li>
+        <li>Perform manual and automated testing using Burp Suite, Postman, and industry-standard security tools.</li>
+        <li>Collaborate with development and business teams to ensure timely vulnerability remediation.</li>
+        <li>Prepare technical and executive-level security assessment reports.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-top">
+        <div>
+          <div class="exp-title">Senior Cyber Security Analyst</div>
+          <div class="exp-org">Talakunchi Networks Pvt Ltd</div>
+        </div>
+        <span class="exp-dates">Jul 2022 – Oct 2024</span>
+      </div>
+      <ul>
+        <li>Performed VAPT engagements across web applications, APIs, and network infrastructure.</li>
+        <li>Conducted network reconnaissance and security audits using Nmap and Zenmap.</li>
+        <li>Analyzed network traffic and security incidents using Wireshark.</li>
+        <li>Identified hidden attack surfaces using DirBuster and validated SQL Injection vulnerabilities using SQLMap.</li>
+        <li>Supported forensic investigations using Autopsy.</li>
+        <li>Reviewed API security architecture and security controls for web and Android applications.</li>
+        <li>Configured and reviewed firewall policies to strengthen organizational security posture.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="credentials" class="alt-bg">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">Credentials</div>
+      <div class="sec-title">Certifications &amp; Education</div>
+    </div>
+    <div class="cred-grid">
+      <div class="cred-card">
+        <h3>Certifications</h3>
+        <div class="cert-row"><span class="cert-check">✓</span>Palo Alto Networks Certified Network Security Engineer (PCNSE)</div>
+        <div class="cert-row"><span class="cert-check">✓</span>Cisco Certified Network Professional (CCNP)</div>
+        <div class="cert-row"><span class="cert-check">✓</span>AWS – Certified Advanced Networking Specialty</div>
+        <div class="cert-row"><span class="cert-check">✓</span>AWS security specialty</div>
+        <div class="cert-row"><span class="cert-check">✓</span>F5</div>
+      </div>
+      <div class="cred-card">
+        <h3>Toolchain</h3>
+        <div class="tool-row">
+          <span class="tool-pill">Burp Suite</span>
+          <span class="tool-pill">Postman</span>
+          <span class="tool-pill">Nmap</span>
+          <span class="tool-pill">Zenmap</span>
+          <span class="tool-pill">Wireshark</span>
+          <span class="tool-pill">SQLMap</span>
+          <span class="tool-pill">DirBuster</span>
+          <span class="tool-pill">Autopsy</span>
+          <span class="tool-pill">Excel (Trackers &amp; Checklists)</span>
+        </div>
+        <h3 style="margin-top:22px;">Education</h3>
+        <div class="edu-title">B.Tech — Electronics &amp; Communication</div>
+        <div class="edu-sub">JNTU, Nizam College, Hyderabad</div>
+        <div class="edu-year">2009</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <h2>Let's talk about your security posture.</h2>
+      <p>Open to Penetration Tester, Security Researcher, and Consultant opportunities — across web, API, mobile, and network security, for clients anywhere.</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="#" id="dl3" download="Dileep_Velma_Network.pdf">↓ Download CV</a>
+        <a class="btn btn-ghost" href="mailto:dileepvelma@gmail.com">✉ dileepvelma@gmail.com</a>
+        <a class="btn btn-ghost" href="tel:9666677706">☎ 9666677706</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/dileepreddyvelma" target="_blank" rel="noopener">in LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>© 2026 Dileep Velma</span>
+    <span>This page is confidential and intended solely for recruiting purposes.</span>
+  </footer>
+</div>
+
+<script>
+  const RESUME_PDF_BASE64 = "JVBERi0xLjQKJcOiw6MKMSAwIG9iago8PAovVGl0bGUgKCkKL0NyZWF0b3IgKP7/AHcAawBoAHQAbQBsAHQAbwBwAGQAZgAgADAALgAxADIALgA2KQovUHJvZHVjZXIgKP7/AFEAdAAgADUALgAxADUALgAxADMpCi9DcmVhdGl[...];
+  const href = "data:application/pdf;base64," + RESUME_PDF_BASE64;
+  document.querySelectorAll('#dl1, #dl2, #dl3').forEach(el => el.setAttribute('href', href));
+</script>
+
+</body>
+</html>
